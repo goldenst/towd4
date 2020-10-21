@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 
-const callSchems = Mongoose.Schema({
+const userSchema = mongoose.Schema({
+    
     name: {
         type: String,
         required: true
@@ -8,7 +9,7 @@ const callSchems = Mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique; true
+        unique: true
     },
     password: {
         type: String,
@@ -24,6 +25,6 @@ const callSchems = Mongoose.Schema({
     timestamps: true
 })
 
-const call = mongoose.model('Call', callSchems)
+const User = mongoose.model('User', userSchema)
 
-export default Call
+export default User
