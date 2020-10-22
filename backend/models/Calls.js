@@ -1,34 +1,25 @@
 import mongoose from 'mongoose'
 
-const callSchema = mongoose.Schema({
+const callsSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
     },
-    name: {
+    requestedBy: {
         type: String,
         required: true
     },
-    email: {
+    customer: {
         type: String,
-        required: true,
-        unique: true
+        required: true,  
     },
-    password: {
-        type: String,
-        required: true
-    },
-    isAdmin: {
-        type: Boolean,
-        required: true,
-        default: false
-    },
+
 
 }, {
     timestamps: true
 })
 
-const Call = mongoose.model('Call', callSchema)
+const Calls = mongoose.model('Calls', callsSchema)
 
-export default Call
+export default Calls

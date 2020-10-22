@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Card, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import calls from '../../calls';
+// import calls from '../../calls';
+import { listCallsDetails} from '../../actions/callActions'
 
 const CallDetail = ({ match }) => {
-  const call = calls.find((p) => p._id === match.params.id);
+
+  const dispatch = useDispatch()
+
+  const callDetails = useSelector(state => state.callDetails)
+  const { loading, error, call } = CallDetail
+
+  useEffect(() => {
+    dispatch(listCallsDetails(match.params.id))
+  },[dispatch,match])
+
+  if(error) {
+    console.log(error)
+  }
+
 
   return (
     <>
