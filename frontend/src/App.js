@@ -3,10 +3,14 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import CallScrene from './components/Calls/CallScrene';
-import HomeScrene from './screnes/HomeScrene';
+import CallScreen from './screens/CallScreen';
+import HomeScreen from './screens/HomeScreen';
+import LoginScreen from './screens/LoginScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import UserListScreen from './screens/UserListScreen';
 import CallDetail from './components/Calls/CallDetail';
-import CallRecieving from './components/Calls/CallRecieving'
+import CallRecieving from './components/Calls/CallRecieving';
 
 const App = () => {
   return (
@@ -14,10 +18,14 @@ const App = () => {
       <Header />
       <main className='py-3'>
         <Container>
-          <Route path='/' component={HomeScrene} exact />
-          <Route path='/calls' component={CallScrene} exact />
+          <Route path='/' component={HomeScreen} exact />
+          <Route path='/login' component={LoginScreen} />
+          <Route path='/register' component={RegisterScreen} />
+          <Route path='/profile' component={ProfileScreen} />
+          <Route path='/calls' component={CallScreen} exact />
           <Route path='/new' component={CallRecieving} exact />
           <Route path='/calls/:id' component={CallDetail} />
+          <Route path='/admin/userlist' component={UserListScreen} />
         </Container>
       </main>
       <Footer />

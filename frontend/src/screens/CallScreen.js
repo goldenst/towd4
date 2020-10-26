@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector} from 'react-redux'
 import { Col, Row } from 'react-bootstrap'
-import Call from '../Calls/Call'
-import Message from '../Message'
-import Loader from '../Loader'
-import { listCalls } from '../../actions/callActions'
+import Call from '../components/Calls/Call'
+import Message from '../components/Message'
+import Loader from '../components/Loader'
+import { listCalls } from '../actions/callActions'
 
 
-const CallScrene = () => {
+const CallScreen = () => {
     const dispatch = useDispatch()
 
     const callList = useSelector(state => state.callList)
@@ -37,4 +37,4 @@ const CallScrene = () => {
     )
 }
 
-export default CallScrene
+export default CallScreen

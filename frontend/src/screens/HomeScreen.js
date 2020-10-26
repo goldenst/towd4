@@ -1,6 +1,6 @@
 import React from 'react'
 
-const HomeScrene = () => {
+const HomeScreen = () => {
     return (
         <div>
             <h3>Welcome to Tow Duck MVP</h3>
@@ -8,4 +8,4 @@ const HomeScrene = () => {
     )
 }
 
-export default HomeScrene
+export default HomeScreen

@@ -8,7 +8,6 @@ import Calls from '../models/Calls.js'
 // @access      Private
 const getCalls =  asyncHandler(async (req, res ) => {
     const calls = await Calls.find({})
-  
     res.json(calls)
 })
 
