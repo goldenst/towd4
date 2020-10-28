@@ -4,8 +4,9 @@ import colors from 'colors';
 import { notFound, errorHandler } from './middleware/error.js';
 import connectDB from './config/db.js';
 
-import newCallRoute from './routes/newCallRoute.js';
+import callRoute from './routes/callRoute.js';
 import userRoutes from './routes/userRoutes.js';
+import servicesRoutes from './routes/servicesRoute.js';
 
 dotenv.config();
 
@@ -19,7 +20,8 @@ app.get('/', (req, res) => {
   res.send('API is Running... ....');
 });
 
-app.use('/api/v1/calls', newCallRoute);
+app.use('/api/v1/calls', callRoute);
+app.use('/api/v1/services', servicesRoutes);
 app.use('/api/v1/users', userRoutes);
 
 app.use(notFound);

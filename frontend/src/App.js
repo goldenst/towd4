@@ -8,6 +8,7 @@ import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import ServiceListScreen from './screens/ServiceListScreen';
 import UserListScreen from './screens/UserListScreen';
 import CallDetail from './components/Calls/CallDetail';
 import CallRecieving from './components/Calls/CallRecieving';
@@ -26,6 +27,7 @@ const App = () => {
           <Route path='/new' component={CallRecieving} exact />
           <Route path='/calls/:id' component={CallDetail} />
           <Route path='/admin/userlist' component={UserListScreen} />
+          <Route path='/admin/services' component={ServiceListScreen} />
         </Container>
       </main>
       <Footer />

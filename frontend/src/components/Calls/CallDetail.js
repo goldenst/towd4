@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 // import calls from '../../calls';
 import { listCallsDetails} from '../../actions/callActions'
 
-const CallDetail = ({ match }) => {
+const CallDetails = ({ match }) => {
 
   const dispatch = useDispatch()
 
-  const callDetails = useSelector(state => state.callDetails)
-  const { loading, error, call } = CallDetail
+  const callDetail = useSelector(state => state.callDetail)
+  const { loading, error, call } = CallDetails
 
   useEffect(() => {
     dispatch(listCallsDetails(match.params.id))
@@ -53,4 +53,4 @@ const CallDetail = ({ match }) => {
   );
 };
 
-export default CallDetail;
+export default CallDetails;
