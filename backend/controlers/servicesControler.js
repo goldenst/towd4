@@ -1,68 +1,80 @@
-import asyncHandler from 'express-async-handler'
-import Services from '../models/Services.js'
-
+import asyncHandler from 'express-async-handler';
+import Services from '../models/Services.js';
 
 // @Desc        Fetch All Services
 // @route       GET /api/v1/services
 // @access      Private
-const getServices =  asyncHandler(async (req, res ) => {
-    const services = await Services.find({})
-    res.json(services)
-})
-
+const getServices = asyncHandler(async (req, res) => {
+  const services = await Services.find({});
+  res.json(services);
+});
 
 // @Desc        Fetch Single service
 // @route       GET /api/v1/services/:id
 // @access      Private
-const getServiceById = asyncHandler(async (req, res ) => {
-    const service = await Services.findById(req.params.id)
+const getServiceById = asyncHandler(async (req, res) => {
+  const service = await Services.findById(req.params.id);
 
-    try {
-    res.json(service)
-      
-    } catch (error) {
-      res.status(404)
-      throw new Error('Service Not Found ')
-    }
-})
+  try {
+    res.json(service);
+  } catch (error) {
+    res.status(404);
+    throw new Error('Service Not Found ');
+  }
+});
 
 // @Desc        CREATE a new Service
-// @route       POST /api/v1/user/
-// @access      Private
-const createService =  asyncHandler(async (req, res ) => {
-    const { name, description, price, catagory, isActive} = req.body
+// @route       POST /api/v1/services/
+// @access      Private / ADMIN
+const createService = asyncHandler(async (req, res) => {
+  const service = new Services({
+    name: 'Sample Name',
+    catagory: 'Sample Service',
+    price: 0,
+    description: 'Sample Desc',
+  });
 
-    const serviceExists = await Services.findOne({ name })
+  const createdService = await service.save();
+  res.status(201).json(createService);
 
-    if (serviceExists) {
-        res.status(400)
-        throw new Error('Service Already Exists')
-    }
+});
 
-    const services = await Services.create({
-        name,
-        description,
-        price,
-        catagory,
-        isActive
-    })
+// @Desc        UPDATE a new Service
+// @route       PUT /api/v1/services/:id
+// @access      Private / ADMIN
+const updateService = asyncHandler(async (req, res) => {
+  const { name, price, catagory, description, isActive } = reg.body;
 
-    if (services) {
-        res.status(201).json({
-            _id: services._id,
-            name: services.name,
-            description: services.description,
-            price: services.price,
-            catagory: services.catagory,
-            isActive: services.isActive
-            
-        })
-    } else {
-        res.status(400)
-        throw new Error('Invalid service Data')
-    }
-     
-})
+  const service = await Services.findById(reg.params.id);
 
+  if (service) {
+      service.name = name
+      service.price = price
+      service.catagory = catagory
+      service.description = description
+      service.isActive = isActive
 
-export { getServices, getServiceById, createService }
+    const updatedService = await Services.save();
+    res.json(updatedService);
+  } else {
+    res.status(400);
+    throw new Error('Invalid service Data');
+  }
+});
+
+// @Desc        DELETE Single service
+// @route       DELETE /api/v1/services/:id
+// @access      Private / ADMIN
+const deleteService = asyncHandler(async (req, res) => {
+  const service = await Services.findById(req.params.id);
+
+  if (service) {
+    await service.remove();
+    res.json({ message: 'Service Removed' });
+  } else {
+    res.status(404);
+    throw new Error('Service not Found');
+  }
+});
+
+export { getServices, getServiceById, createService, deleteService, updateService };

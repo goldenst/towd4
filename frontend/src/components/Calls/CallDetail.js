@@ -1,25 +1,23 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Card, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 // import calls from '../../calls';
-import { listCallsDetails} from '../../actions/callActions'
+import { listCallsDetails } from '../../actions/callActions';
 
 const CallDetails = ({ match }) => {
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
-
-  const callDetail = useSelector(state => state.callDetail)
-  const { loading, error, call } = CallDetails
+  const callDetail = useSelector((state) => state.callDetail);
+  const { loading, error, call } = CallDetails;
 
   useEffect(() => {
-    dispatch(listCallsDetails(match.params.id))
-  },[dispatch,match])
+    dispatch(listCallsDetails(match.params.id));
+  }, [dispatch, match]);
 
-  if(error) {
-    console.log(error)
+  if (error) {
+    console.log(error);
   }
-
 
   return (
     <>
@@ -28,16 +26,16 @@ const CallDetails = ({ match }) => {
       </Link>
       <h5>Call Detail</h5>
       <Col md={3}>
-          <Card>
-        <ListGroup>
+        <Card>
+          <ListGroup>
             <ListGroup.Item>
-          <Row>{call.customer}</Row>
-          <Row>{call.vehMake}</Row>
-          <Row>{call.vehYr}</Row>
-          <Row>{call.vehColor}</Row>
-          <Row>{call.requestedBy}</Row>
-          </ListGroup.Item>
-        </ListGroup>
+              <Row>{call.customer}</Row>
+              <Row>{call.vehMake}</Row>
+              <Row>{call.vehYr}</Row>
+              <Row>{call.vehColor}</Row>
+              <Row>{call.requestedBy}</Row>
+            </ListGroup.Item>
+          </ListGroup>
         </Card>
       </Col>
       <Col md={3}>

@@ -5,10 +5,15 @@ import {
   getServices,
   getServiceById,
   createService,
+  deleteService,
+  updateService,
 } from '../controlers/servicesControler.js';
 
-router.route('/').get(getServices);
-router.route('/:id').get(getServiceById);
-router.route('/new').post(createService);
+router.route('/').get(getServices).post(protect, admin, createService);
+router
+  .route('/:id')
+  .get(getServiceById)
+  .delete(protect, admin, deleteService)
+  .put(protect, admin, updateService);
 
 export default router;

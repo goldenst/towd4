@@ -10,3 +10,15 @@
                 at createError (createError.js:16)
                 at settle (settle.js:17)
                 at XMLHttpRequest.handleLoad (xhr.js:69)
+
+
+# servicelistScreen
+    in use effect 
+
+     useEffect(() => {
+    dispatch({ type: SERVICES_CREATE_RESET });
+
+    --------if (!userinfo.isAdmin) --- get error that user info is not defined 
+    if (!userInfo) {
+      history.push('/login');
+    }
