@@ -39,13 +39,13 @@ const createService = asyncHandler(async (req, res) => {
 
 });
 
-// @Desc        UPDATE a new Service
+// @Desc        UPDATE a  Service
 // @route       PUT /api/v1/services/:id
 // @access      Private / ADMIN
 const updateService = asyncHandler(async (req, res) => {
-  const { name, price, catagory, description, isActive } = reg.body;
+  const { name, price, catagory, description, isActive } = req.body;
 
-  const service = await Services.findById(reg.params.id);
+  const service = await Services.findById(req.params.id);
 
   if (service) {
       service.name = name
@@ -54,11 +54,11 @@ const updateService = asyncHandler(async (req, res) => {
       service.description = description
       service.isActive = isActive
 
-    const updatedService = await Services.save();
+    const updatedService = await service.save();
     res.json(updatedService);
   } else {
     res.status(400);
-    throw new Error('Invalid service Data');
+    throw new Error('Service not Found');
   }
 });
 

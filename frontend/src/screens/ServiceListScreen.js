@@ -59,7 +59,7 @@ const ServiceListScreen = ({ history, match }) => {
 
   const createServiceHandler = () => {
     dispatch(createService())
-    console.log('create clicked');
+    // console.log('create clicked');
   };
 
   const deleteHandler = (id) => {

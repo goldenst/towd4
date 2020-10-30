@@ -7,6 +7,7 @@ import {
   servicesListReducer,
   serviceDeleteReducer,
   serviceCreateReducer,
+  serviceUpdateReducer
 } from './reducers/servicesReducer';
 import {
   userLoginReducer,
@@ -15,6 +16,7 @@ import {
   userUpdateProfileReducer,
   userListReducer,
   userDeleteReducer,
+  userUpdateReducer,
 } from './reducers/userReducers';
 
 const reducer = combineReducers({
@@ -24,12 +26,14 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userDetails: userDetailReducer,
   userUpdateProfile: userUpdateProfileReducer,
+  userUpdate: userUpdateReducer,
   userList: userListReducer,
   userDelete: userDeleteReducer,
   serviceList: servicesListReducer,
   serviceDetail: serviceDetailReducer,
   serviceDelete: serviceDeleteReducer,
   serviceCreate: serviceCreateReducer,
+  serviceUpdate: serviceUpdateReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

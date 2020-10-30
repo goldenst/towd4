@@ -12,6 +12,10 @@ import {
   SERVICES_CREATE_SUCCESS,
   SERVICES_CREATE_FAIL,
   SERVICES_CREATE_RESET,
+  SERVICES_UPDATE_REQUEST,
+  SERVICES_UPDATE_SUCCESS,
+  SERVICES_UPDATE_FAIL,
+  SERVICES_UPDATE_RESET,
 } from '../constants/servicesConstants';
 
 export const servicesListReducer = (state = { services: [] }, action) => {
@@ -67,3 +71,21 @@ export const serviceCreateReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export const serviceUpdateReducer = (state = {service: {}}, action) => {
+  switch (action.type) {
+    case SERVICES_UPDATE_REQUEST:
+      return { loading: true };
+    case SERVICES_UPDATE_SUCCESS:
+      return { loading: false, success: true, service: action.payload };
+    case SERVICES_UPDATE_FAIL:
+      return { loading: false, error: action.payload };
+    case SERVICES_UPDATE_RESET:
+      return {
+        service: {}
+      };
+    default:
+      return state;
+  }
+};
+

@@ -9,6 +9,7 @@ import LoginScreen from './screens/LoginScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ServiceListScreen from './screens/ServiceListScreen';
+import ServiceEditScreen from './screens/ServiceEditScreen';
 import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen'
 import CallDetail from './components/Calls/CallDetail';
@@ -30,6 +31,7 @@ const App = () => {
           <Route path='/admin/userlist' component={UserListScreen} />
           <Route path='/admin/user/:id/edit' component={UserEditScreen} />
           <Route path='/admin/services' component={ServiceListScreen} />
+          <Route path='/admin/service/:id/edit' component={ServiceEditScreen} />
         </Container>
       </main>
       <Footer />

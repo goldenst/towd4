@@ -11,7 +11,11 @@ import {
   SERVICES_DELETE_FAIL,
   SERVICES_CREATE_SUCCESS,
   SERVICES_CREATE_REQUEST,
-  SERVICES_CREATE_FAIL
+  SERVICES_CREATE_FAIL,
+  SERVICES_UPDATE_REQUEST,
+  SERVICES_UPDATE_SUCCESS,
+  SERVICES_UPDATE_FAIL,
+  SERVICES_UPDATE_RESET
 } from '../constants/servicesConstants';
 
 export const listServices = () => async (dispatch) => {
@@ -125,3 +129,41 @@ export const createService = () => async (dispatch, getState) => {
     });
   }
 };
+
+  //-------------------------- UPDATE SERVICE
+
+  export const updateService = (service) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: SERVICES_UPDATE_REQUEST,
+      });
+  
+      const {
+        userLogin: { userInfo },
+      } = getState();
+  
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+  
+    const { data } = await axios.put(`/api/v1/services/${service._id}`, service, config);
+  
+      dispatch({ 
+        type: SERVICES_UPDATE_SUCCESS,
+        payload: data
+        
+      });
+    } catch (error) {
+      console.log(error)
+      dispatch({
+        type: SERVICES_UPDATE_FAIL,
+        payload:
+          error.responce && error.responce.data.message
+            ? error.responce.data.message
+            : error.message,
+      });
+    }
+  };

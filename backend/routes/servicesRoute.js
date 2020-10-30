@@ -14,6 +14,6 @@ router
   .route('/:id')
   .get(getServiceById)
   .delete(protect, admin, deleteService)
-  .put(protect, admin, updateService);
+  .put( updateService);
 
 export default router;

@@ -142,7 +142,7 @@ const deleteUser =  asyncHandler(async (req, res ) => {
 // @route       GET /api/v1/users/:id
 // @access      Private / admin
 const getUserByid =  asyncHandler(async (req, res ) => {
-    const user = await (await User.findById(req.params.id)).select('-password')
+    const user = await User.findById(req.params.id).select('-password')
 
     if(user){
         res.json(user)
