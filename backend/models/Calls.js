@@ -6,14 +6,36 @@ const callsSchema = mongoose.Schema({
         required: true,
         ref: 'User'
     },
+    invoiveNumber: {
+        type: String
+    },
     requestedBy: {
         type: String,
         required: true
     },
-    customer: {
-        type: String,
-        required: true,  
+    callLogNumber: {
+        type: String
     },
+    customerName: {
+        type: String,
+        required: true,
+    },
+    customerPhone: {
+        type: String
+    },
+    customerEmail: {
+        type: String
+    },
+    pickupLocation: {
+        type: String
+    },
+    serviceRequessted: {
+        type: String
+    },
+    reason: {
+        type: String
+    },
+   
 
 
 }, {
