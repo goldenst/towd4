@@ -15,7 +15,7 @@ import {
   SERVICES_UPDATE_REQUEST,
   SERVICES_UPDATE_SUCCESS,
   SERVICES_UPDATE_FAIL,
-  SERVICES_UPDATE_RESET
+  // SERVICES_UPDATE_RESET
 } from '../constants/servicesConstants';
 
 export const listServices = () => async (dispatch) => {

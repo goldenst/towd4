@@ -7,6 +7,7 @@ import connectDB from './config/db.js';
 import callRoute from './routes/callRoute.js';
 import userRoutes from './routes/userRoutes.js';
 import servicesRoutes from './routes/servicesRoute.js';
+import pdrRoutes from './routes/pdrRoutes.js';
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1/calls', callRoute);
+app.use('/api/v1/pdrs', pdrRoutes);
 app.use('/api/v1/services', servicesRoutes);
 app.use('/api/v1/users', userRoutes);
 

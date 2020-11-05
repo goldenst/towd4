@@ -1,118 +1,120 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
-const callsSchema = mongoose.Schema({
+const callsSchema = mongoose.Schema(
+  {
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
     },
     callOrPoNumber: {
-        type: String
+      type: String,
     },
-    invoiveNumber: {
-        type: String
+    invoiceNumber: {
+      type: String,
     },
     requestedBy: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     callLogNumber: {
-        type: String
+      type: String,
     },
     customerName: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     customerPhone: {
-        type: String
+      type: String,
     },
     customerEmail: {
-        type: String
+      type: String,
     },
     pickupLocation: {
-        type: String
+      type: String,
     },
     serviceRequessted: {
-        type: String
+      type: String,
     },
     reason: {
-        type: String
+      type: String,
     },
     towDestination: {
-        type: String
+      type: String,
     },
     vehYear: {
-        type: String 
+      type: String,
     },
     vehMake: {
-        type: String
+      type: String,
     },
     vehModel: {
-        type: String
+      type: String,
     },
     vehColor: {
-        type: String
+      type: String,
     },
     vehVin: {
-        type: String
+      type: String,
     },
     vehPlate: {
-        type: String
+      type: String,
     },
     vehPlateState: {
-        type: String
+      type: String,
     },
     vehOdom: {
-        type: String
+      type: String,
     },
     vehUnitNumber: {
-        type: String
+      type: String,
     },
     driveable: {
-        type: Boolean,
-        default: false
+      type: Boolean,
+      default: false,
     },
     havKeys: {
-        type: Boolean,
-        default: true
+      type: Boolean,
+      default: true,
     },
     serviceDate: {
-        type: Date
+      type: Date,
     },
     di: {
-        type: Date
+      type: Date,
     },
     er: {
-        type: Date
+      type: Date,
     },
     ol: {
-        type: Date
+      type: Date,
     },
-   cl: {
-    type: Date
-   },
-   milesToVehicle: {
-       type: Number
-   },
-   towMiles: {
-       type: Number
-   },
-   total: {
-       type: Number
-   },
-   isAudited: {
-       type: Boolean,
-       default: false
-   },
-   isPaid: {
-       type: Boolean,
-       default: false
-   }
+    cl: {
+      type: Date,
+    },
+    milesToVehicle: {
+      type: Number,
+    },
+    towMiles: {
+      type: Number,
+    },
+    total: {
+      type: Number,
+    },
+    isAudited: {
+      type: Boolean,
+      default: false,
+    },
+    isPaid: {
+      type: Boolean,
+      default: false
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-}, {
-    timestamps: true
-})
+const Calls = mongoose.model('Calls', callsSchema);
 
-const Calls = mongoose.model('Calls', callsSchema)
-
-export default Calls
+export default Calls;

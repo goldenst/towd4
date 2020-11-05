@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Form, Col, Button } from 'react-bootstrap';
 
@@ -11,15 +12,15 @@ const CallRecieving = () => {
       <Form>
         <h5>Requested by</h5>
         <Form.Row>
-          <Form.Group as={Col} controlId='formGridRequestedBy'>
+          <Form.Group as={Col} controlId='requestedBy'>
             <Form.Label>Requested By</Form.Label>
             <Form.Control 
             type='text' 
             placeholder='Requested By'
-            // value={requestedBy}
+            //value={requestedBy}
             />
           </Form.Group>
-          <Form.Group as={Col} controlId='formGridCallnum'>
+          <Form.Group as={Col} controlId='callnum'>
             <Form.Label>Call / Log Number</Form.Label>
             <Form.Control 
             type='text' 
@@ -185,7 +186,7 @@ const CallRecieving = () => {
             <Form.Control />
           </Form.Group>
         </Form.Row>
-        <Button variant='primary' type='submit'>
+        <Button variant='primary' type='submit' >
           Submit Call
         </Button>
       </Form>
