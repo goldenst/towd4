@@ -92,19 +92,20 @@ const ServiceListScreen = ({ history, match }) => {
         <Table striped bordered hover responsive className='table-sm'>
           <thead>
             <tr>
-              <th>ID</th>
               <th>NAME</th>
               <th>PRICE</th>
+              <th>DESCRIPTION</th>
               <th>isActive</th>
+
               <th></th>
             </tr>
           </thead>
           <tbody>
             {services.map((service) => (
               <tr key={service._id}>
-                <td>{service._id}</td>
                 <td>{service.name}</td>
                 <td>${service.price}</td>
+                <td>{service.description}</td>
                 <td>
                   {service.isActive ? (
                     <i className='fas fa-check' style={{ color: 'green' }}></i>

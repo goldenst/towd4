@@ -16,6 +16,7 @@ import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen'
 import CallDetail from './components/Calls/CallDetail';
 import CallRecieving from './components/Calls/CallRecieving';
+import PdrScreen from './screens/PdrScreen'
 // import DispatchHeader from './components/DispatchHeader';
 
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
           <Route path='/admin/user/:id/edit' component={UserEditScreen} />
           <Route path='/admin/services' component={ServiceListScreen} />
           <Route path='/admin/service/:id/edit' component={ServiceEditScreen} />
+          <Route path='/pdrs' component={PdrScreen}  />
         </Container>
       </main>
       <Footer />
