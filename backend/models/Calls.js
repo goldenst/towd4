@@ -2,11 +2,7 @@ import mongoose from 'mongoose';
 
 const callsSchema = mongoose.Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: 'User',
-    },
+   
     callOrPoNumber: {
       type: String,
     },
@@ -15,14 +11,14 @@ const callsSchema = mongoose.Schema(
     },
     requestedBy: {
       type: String,
-      required: true,
+     
     },
     callLogNumber: {
       type: String,
     },
     customerName: {
       type: String,
-      required: true,
+      
     },
     customerPhone: {
       type: String,

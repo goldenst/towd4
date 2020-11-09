@@ -27,15 +27,53 @@ const getCallById = asyncHandler(async (req, res) => {
 // @route       POST /api/v1/calls/
 // @access      Private
 const createCall = asyncHandler(async (req, res) => {
-  const call = new Call({
-    name: 'Sample Name',
-    catagory: 'Sample Service',
-    price: 0,
-    description: 'Sample Desc',
+  const {
+    callOrPoNumber,
+    invoiceNumber,
+    requestedBy,
+    callLogNumber,
+    customerName,
+    customerPhone,
+    customerEmail,
+    pickupLocation,
+    serviceRequessted,
+    reason,
+    towDestination,
+    vehYear,
+    vehMake,
+    vehModel,
+    vehColor,
+    vehVin,
+    vehPlate,
+    vehPlateState,
+    vehOdom,
+    vehUnitNumber,
+  } = req.body;
+
+  const call = await Calls.create({
+    callOrPoNumber,
+    invoiceNumber,
+    requestedBy,
+    callLogNumber,
+    customerName,
+    customerPhone,
+    customerEmail,
+    pickupLocation,
+    serviceRequessted,
+    reason,
+    towDestination,
+    vehYear,
+    vehMake,
+    vehModel,
+    vehColor,
+    vehVin,
+    vehPlate,
+    vehPlateState,
+    vehOdom,
+    vehUnitNumber,
   });
 
-  const createdCall = await call.save();
-  res.status(201).json(createCall);
+  res.status(201).json(call);
 });
 
 export { getCalls, getCallById, createCall };

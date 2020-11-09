@@ -1,15 +1,34 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, Col, Button } from 'react-bootstrap';
+import { createCall } from '../../actions/callActions';
 
 const CallRecieving = () => {
  
+  const [requestedBy, setRequestedBy] = useState('')
+  const [callOrPoNumber, setCallOrPoNumber] = useState('')
+  const [customerName, setCustomerNamer] = useState('')
+  
 
+
+  const dispatch = useDispatch()
+
+
+  const submitHandler = (e) => {
+    e.preventDefaulut();
+    dispatch(createCall({
+    requestedBy,
+    callOrPoNumber,
+    customerName
+
+    }))
+  };
 
   return (
     <div>
       <h3>Call Recieving</h3>
-      <Form>
+      <Form onSubmit={submitHandler}>
         <h5>Requested by</h5>
         <Form.Row>
           <Form.Group as={Col} controlId='requestedBy'>
@@ -17,15 +36,15 @@ const CallRecieving = () => {
             <Form.Control 
             type='text' 
             placeholder='Requested By'
-            //value={requestedBy}
+            value={requestedBy}
             />
           </Form.Group>
-          <Form.Group as={Col} controlId='callnum'>
+          <Form.Group as={Col} controlId='callOrPoNumber'>
             <Form.Label>Call / Log Number</Form.Label>
             <Form.Control 
             type='text' 
             placeholder='12345' 
-            // value={log}
+            value={callOrPoNumber}
             />
           </Form.Group>
         </Form.Row>
@@ -35,22 +54,25 @@ const CallRecieving = () => {
         <hr />
         <Form.Row>
           <Col>
-            <Form.Label>First Name</Form.Label>
-            <Form.Control placeholder='First name' />
-          </Col>
-          <Col>
-            <Form.Label>Last Name</Form.Label>
-            <Form.Control placeholder='Last name' />
+            <Form.Label>Customer Name</Form.Label>
+            <Form.Control 
+            placeholder='Customer Name'
+            type='text'
+            value={customerName} />
           </Col>
         </Form.Row>
         <Form.Row>
           <Form.Group as={Col} controlId='formGridPhone'>
             <Form.Label>Phone</Form.Label>
-            <Form.Control type='Phone' placeholder='Phone' />
+            <Form.Control 
+            type='Phone' 
+            placeholder='Phone' />
           </Form.Group>
           <Form.Group as={Col} controlId='formGridEmail'>
             <Form.Label>Email</Form.Label>
-            <Form.Control type='email' placeholder='Enter email' />
+            <Form.Control 
+            type='email' 
+            placeholder='Enter email' />
           </Form.Group>
         </Form.Row>
         {/* -------------------------------- Vehicle Section -------------------------------- */}
